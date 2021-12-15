@@ -23,11 +23,12 @@
 
         <ImageView
             android:id="@+id/imageView"
-            app:srcCompat="@drawable/ic_book"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="60dp"
+            android:layout_height="98dp"
+            android:layout_marginStart="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_book" />
 
         <TextView
             android:id="@+id/tvBookRowAuthor"
@@ -42,11 +43,11 @@
 
         <ImageButton
             android:id="@+id/imageBtnBookRowReview"
-            android:layout_width="103dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="89dp"
+            android:layout_height="78dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintHorizontal_bias="0.342"
             app:layout_constraintStart_toEndOf="@+id/tvBookRowTitle"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_review_button" />
