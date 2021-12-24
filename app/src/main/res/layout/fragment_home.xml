@@ -6,15 +6,87 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/tvHomeHeader"
+
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:fontFamily="monospace"
+        android:foregroundGravity="top"
+        android:gravity="center"
+        android:text="Home page"
+        android:textSize="28sp"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="home"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/cvMainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHomeHeader"
+        app:layout_constraintVertical_bias="0.2"
+        tools:layout_editor_absoluteX="10dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvHomeFragmentUserOpinions"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/cvHomeFragmentHeight"
+                android:layout_weight="1"
+                app:cardCornerRadius="@dimen/cvHomeFragmentCornerRadius"
+                android:layout_margin="@dimen/cvHomeFragmentMargin">
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/cvHomeFragmentHeight"
+                android:layout_weight="1"
+                app:cardCornerRadius="@dimen/cvHomeFragmentCornerRadius"
+                android:layout_margin="@dimen/cvHomeFragmentMargin" >
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/cvHomeFragmentHeight"
+                android:layout_weight="1"
+                app:cardCornerRadius="@dimen/cvHomeFragmentCornerRadius"
+                android:layout_margin="@dimen/cvHomeFragmentMargin">
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/cvHomeFragmentHeight"
+                android:layout_weight="1"
+                app:cardCornerRadius="@dimen/cvHomeFragmentCornerRadius"
+                android:layout_margin="@dimen/cvHomeFragmentMargin" >
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

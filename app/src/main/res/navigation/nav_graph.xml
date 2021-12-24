@@ -17,7 +17,9 @@
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_bookReviewsFragment"
-            app:destination="@id/bookReviewsFragment" />
+            app:destination="@id/bookReviewsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -26,7 +28,9 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_userOpinionsFragment"
-            app:destination="@id/userOpinionsFragment" />
+            app:destination="@id/userOpinionsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/bookReviewsFragment"
