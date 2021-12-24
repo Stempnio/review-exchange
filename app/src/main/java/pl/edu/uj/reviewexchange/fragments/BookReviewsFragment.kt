@@ -17,8 +17,17 @@ class BookReviewsFragment : Fragment() {
     ): View {
         _binding = FragmentBookReviewsBinding.inflate(layoutInflater, container, false)
 
+        val bookId = arguments?.getString("book_id").toString()
+        val bookName = arguments?.getString("book_author").toString()
+        val bookAuthor = arguments?.getString("book_name").toString()
+
+        binding.tvBookReviewAuthor.text = bookAuthor
+        binding.tvBookReviewTitle.text = bookName
+
+
         return binding.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
