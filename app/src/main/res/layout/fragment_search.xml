@@ -11,6 +11,9 @@
         android:name="pl.edu.uj.reviewexchange.fragments.SearchFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/row_book"
-        tools:context=".fragments/SearchFragment" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:context=".fragments/SearchFragment"
+        tools:listitem="@layout/row_book" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
