@@ -6,14 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".fragments.SearchFragment">
 
+    <SearchView
+        android:id="@+id/svFragmentSearch"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:queryHint="Type book name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewBookList"
         android:name="pl.edu.uj.reviewexchange.fragments.SearchFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/svFragmentSearch"
         tools:context=".fragments/SearchFragment"
         tools:listitem="@layout/row_book" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

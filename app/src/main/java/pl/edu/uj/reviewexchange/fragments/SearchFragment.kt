@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import pl.edu.uj.reviewexchange.adapters.BookRecyclerViewAdapter
@@ -23,7 +24,21 @@ class SearchFragment : Fragment() {
 
         val recyclerViewBookList = binding.recyclerViewBookList
         recyclerViewBookList.layoutManager = LinearLayoutManager(context)
-        recyclerViewBookList.adapter = BookRecyclerViewAdapter(BookPlaceholder.BOOKS)
+        val rvBookAdapter = BookRecyclerViewAdapter(BookPlaceholder.BOOKS)
+        recyclerViewBookList.adapter = rvBookAdapter
+
+        binding.svFragmentSearch.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                rvBookAdapter.filter.filter(newText)
+                return false
+            }
+
+        })
+
 
         return binding.root
     }
