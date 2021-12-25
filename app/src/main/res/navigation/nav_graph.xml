@@ -36,10 +36,29 @@
         android:id="@+id/bookReviewsFragment"
         android:name="pl.edu.uj.reviewexchange.fragments.BookReviewsFragment"
         android:label="fragment_book_reviews"
-        tools:layout="@layout/fragment_book_reviews" />
+        tools:layout="@layout/fragment_book_reviews" >
+        <action
+            android:id="@+id/action_bookReviewsFragment_to_writeReviewFragment"
+            app:destination="@id/writeReviewFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
+    </fragment>
     <fragment
         android:id="@+id/userOpinionsFragment"
         android:name="pl.edu.uj.reviewexchange.fragments.UserOpinionsFragment"
         android:label="fragment_user_opinions"
         tools:layout="@layout/fragment_user_opinions" />
+    <fragment
+        android:id="@+id/writeReviewFragment"
+        android:name="pl.edu.uj.reviewexchange.fragments.WriteReviewFragment"
+        android:label="fragment_write_review"
+        tools:layout="@layout/fragment_write_review" >
+        <action
+            android:id="@+id/action_writeReviewFragment_to_bookReviewsFragment"
+            app:destination="@id/bookReviewsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popUpTo="@id/bookReviewsFragment"
+            />
+    </fragment>
 </navigation>
