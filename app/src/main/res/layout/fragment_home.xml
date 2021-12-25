@@ -45,8 +45,21 @@
                 android:layout_height="@dimen/cvHomeFragmentHeight"
                 android:layout_weight="1"
                 app:cardCornerRadius="@dimen/cvHomeFragmentCornerRadius"
-                android:layout_margin="@dimen/cvHomeFragmentMargin">
+                android:layout_margin="@dimen/cvHomeFragmentMargin"
+                android:foreground="?android:attr/selectableItemBackground">
 
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="My reviews"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -54,7 +67,8 @@
                 android:layout_height="@dimen/cvHomeFragmentHeight"
                 android:layout_weight="1"
                 app:cardCornerRadius="@dimen/cvHomeFragmentCornerRadius"
-                android:layout_margin="@dimen/cvHomeFragmentMargin" >
+                android:layout_margin="@dimen/cvHomeFragmentMargin"
+                android:foreground="?android:attr/selectableItemBackground">
 
             </androidx.cardview.widget.CardView>
 
@@ -70,7 +84,8 @@
                 android:layout_height="@dimen/cvHomeFragmentHeight"
                 android:layout_weight="1"
                 app:cardCornerRadius="@dimen/cvHomeFragmentCornerRadius"
-                android:layout_margin="@dimen/cvHomeFragmentMargin">
+                android:layout_margin="@dimen/cvHomeFragmentMargin"
+                android:foreground="?android:attr/selectableItemBackground">
 
             </androidx.cardview.widget.CardView>
 
@@ -79,7 +94,8 @@
                 android:layout_height="@dimen/cvHomeFragmentHeight"
                 android:layout_weight="1"
                 app:cardCornerRadius="@dimen/cvHomeFragmentCornerRadius"
-                android:layout_margin="@dimen/cvHomeFragmentMargin" >
+                android:layout_margin="@dimen/cvHomeFragmentMargin"
+                android:foreground="?android:attr/selectableItemBackground">
 
             </androidx.cardview.widget.CardView>
 
