@@ -1,10 +1,16 @@
 package pl.edu.uj.reviewexchange.models
 
-//class Book {
-//    var id : Int = -1
-//    var name : String = ""
-//    var author : String = ""
-//}
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+
+open class BookRealm : RealmObject() {
+    @PrimaryKey
+    var id : Int = -1
+    var name : String = ""
+    var author : String = ""
+    var description : String = ""
+}
+
 
 data class Book(var id : Int = -1,
                 var name : String = "",
@@ -38,8 +44,6 @@ data class Book(var id : Int = -1,
 }
 
 
-
-
 object BookPlaceholder {
     val BOOKS : MutableList<Book> = ArrayList()
 
@@ -51,8 +55,7 @@ object BookPlaceholder {
                 .author("Author of book $i")
                 .description("Description of book $i")
                 .build())
-
-//            BOOKS.add(Book(i, "Book $i", "Author $i"))
         }
+
     }
 }
