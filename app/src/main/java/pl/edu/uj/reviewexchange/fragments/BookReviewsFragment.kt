@@ -41,16 +41,15 @@ class BookReviewsFragment : Fragment() {
                 bundleOf("book_id" to bookId, "book_name" to bookName, "book_author" to bookAuthor))
         }
 
-        binding.btnFragmentBookReviewsApplyMode.setOnClickListener {
-            val option = binding.rgFragmentBookReviews.checkedRadioButtonId
+        // setting display mode
+        binding.rgFragmentBookReviews.setOnCheckedChangeListener { _, checkedId ->
+            when(checkedId) {
+                binding.rbFragmentBookReviewsViewPagerMode.id -> setViewPagerDisplayMode()
 
-            if(option == binding.rbFragmentBookReviewsViewPagerMode.id) {
-                setViewPagerDisplayMode()
-            } else  { // recycler view is default
-                setRecyclerViewDisplayMode()
+                binding.rbFragmentBookReviewsRecyclerViewMode.id -> setRecyclerViewDisplayMode()
             }
-        }
 
+        }
 
         return binding.root
     }
