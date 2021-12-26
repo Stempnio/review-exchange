@@ -13,4 +13,7 @@
     <string name="slides">Slides</string>
     <string name="scrollable_list">Scrollable list</string>
     <string name="write_your_review">Write your review</string>
+    <string name="my_reviews">My reviews</string>
+    <string name="home_page">Home page</string>
+    <string name="no_reviews_found">There are no reviews of this book yet</string>
 </resources>

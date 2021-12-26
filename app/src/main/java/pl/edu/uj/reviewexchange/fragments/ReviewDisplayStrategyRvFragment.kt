@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import pl.edu.uj.reviewexchange.adapters.BookReviewRecyclerViewAdapter
 import pl.edu.uj.reviewexchange.databinding.FragmentReviewDisplayStrategyRvBinding
-import pl.edu.uj.reviewexchange.models.BookReviewPlaceHolder.getBookReviews
+import pl.edu.uj.reviewexchange.models.BookReview
 
-class ReviewDisplayStrategyRvFragment(private val bookId : Int) : Fragment() {
+class ReviewDisplayStrategyRvFragment(private val reviewList : MutableList<BookReview>) : Fragment() {
     private var _binding : FragmentReviewDisplayStrategyRvBinding? = null
 
     private val binding get() = _binding!!
@@ -24,7 +24,8 @@ class ReviewDisplayStrategyRvFragment(private val bookId : Int) : Fragment() {
 
         val recyclerView = binding.rvFragmentDisplayStrategyRv
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = BookReviewRecyclerViewAdapter(getBookReviews(bookId))
+
+        recyclerView.adapter = BookReviewRecyclerViewAdapter(reviewList)
 
         return binding.root
     }

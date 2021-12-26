@@ -10,6 +10,8 @@ import androidx.fragment.app.commit
 import androidx.navigation.fragment.findNavController
 import pl.edu.uj.reviewexchange.R
 import pl.edu.uj.reviewexchange.databinding.FragmentBookReviewsBinding
+import pl.edu.uj.reviewexchange.models.BookReview
+import pl.edu.uj.reviewexchange.models.BookReviewPlaceHolder
 
 class BookReviewsFragment : Fragment() {
     private var _binding : FragmentBookReviewsBinding? = null
@@ -18,6 +20,7 @@ class BookReviewsFragment : Fragment() {
     private lateinit var bookId : String
     private lateinit var bookName : String
     private lateinit var bookAuthor : String
+    private lateinit var reviewList : MutableList<BookReview>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +31,10 @@ class BookReviewsFragment : Fragment() {
         bookId = arguments?.getString("book_id").toString()
         bookName = arguments?.getString("book_author").toString()
         bookAuthor = arguments?.getString("book_name").toString()
+
+        reviewList = BookReviewPlaceHolder.getBookReviews(bookId.toInt())
+        if(reviewList.isEmpty())
+            displayMessageAlertDialog(getString(R.string.no_reviews_found))
 
         // set default style of display to recycler view
         setRecyclerViewDisplayMode()
@@ -58,7 +65,7 @@ class BookReviewsFragment : Fragment() {
         childFragmentManager.commit {
             setReorderingAllowed(true)
             replace(R.id.fragmentContainerFragmentBookReviews,
-                ReviewDisplayStrategyRvFragment(bookId.toInt()))
+                ReviewDisplayStrategyRvFragment(reviewList))
         }
     }
 
@@ -66,7 +73,7 @@ class BookReviewsFragment : Fragment() {
         childFragmentManager.commit {
             setReorderingAllowed(true)
             replace(R.id.fragmentContainerFragmentBookReviews,
-                ReviewDisplayStrategyVpFragment(bookId.toInt()))
+                ReviewDisplayStrategyVpFragment(reviewList))
         }
     }
 

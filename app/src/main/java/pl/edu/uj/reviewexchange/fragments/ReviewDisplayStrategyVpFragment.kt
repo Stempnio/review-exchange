@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import pl.edu.uj.reviewexchange.adapters.BookReviewViewPager2Adapter
 import pl.edu.uj.reviewexchange.databinding.FragmentReviewDisplayStrategyVpBinding
-import pl.edu.uj.reviewexchange.models.BookReviewPlaceHolder
+import pl.edu.uj.reviewexchange.models.BookReview
 
 
-class ReviewDisplayStrategyVpFragment(private val bookId : Int) : Fragment() {
+class ReviewDisplayStrategyVpFragment(private val reviewList : MutableList<BookReview>) : Fragment() {
     private var _binding : FragmentReviewDisplayStrategyVpBinding? = null
 
     private val binding get() = _binding!!
@@ -22,7 +22,8 @@ class ReviewDisplayStrategyVpFragment(private val bookId : Int) : Fragment() {
         _binding = FragmentReviewDisplayStrategyVpBinding.inflate(layoutInflater, container, false)
 
         val viewpager2 = binding.vpFragmentBookDisplayStrategyVp
-        viewpager2.adapter = BookReviewViewPager2Adapter(BookReviewPlaceHolder.getBookReviews(bookId))
+
+        viewpager2.adapter = BookReviewViewPager2Adapter(reviewList)
 
         return binding.root
     }
