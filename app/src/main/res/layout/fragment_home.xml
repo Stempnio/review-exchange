@@ -15,7 +15,7 @@
         android:fontFamily="monospace"
         android:foregroundGravity="top"
         android:gravity="center"
-        android:text="Home page"
+        android:text="@string/home_page"
         android:textSize="28sp"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,10 +54,19 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
+                    <ImageView
+                        android:id="@+id/imgViewFragmentHomeMyReviews"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_user_reviews" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="My reviews"/>
+                        android:layout_margin="10dp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:text="@string/my_reviews"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.cardview.widget.CardView>
