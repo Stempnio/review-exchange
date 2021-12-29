@@ -3,4 +3,8 @@
     <dimen name="cvHomeFragmentCornerRadius">30dp</dimen>
     <dimen name="cvHomeFragmentHeight">150dp</dimen>
     <dimen name="cvHomeFragmentMargin">5dp</dimen>
+
+<!--    register dimensions-->
+    <dimen name="marginVertical">15dp</dimen>
+    <dimen name="marginHorizontal">40dp</dimen>
 </resources>
