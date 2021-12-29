@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "887024177960",
+    "project_id": "review-exchange-e87f4",
+    "storage_bucket": "review-exchange-e87f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887024177960:android:35609daf44ba195dceb61d",
+        "android_client_info": {
+          "package_name": "pl.edu.uj.reviewexchange"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887024177960-1vo24k5kn8acal4jpvsmvccs3nm9cj6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6fiip7NmdxkCfpZ3rKLUrZbNbeJvI7kE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887024177960-1vo24k5kn8acal4jpvsmvccs3nm9cj6j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
