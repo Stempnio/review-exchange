@@ -1,4 +1,4 @@
-package pl.edu.uj.reviewexchange.fragments
+package pl.edu.uj.reviewexchange.registration
 
 import android.os.Bundle
 import android.util.Log

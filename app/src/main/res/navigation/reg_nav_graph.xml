@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/logInFragment"
-        android:name="pl.edu.uj.reviewexchange.fragments.LogInFragment"
+        android:name="pl.edu.uj.reviewexchange.registration.LogInFragment"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="pl.edu.uj.reviewexchange.fragments.RegisterFragment"
+        android:name="pl.edu.uj.reviewexchange.registration.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action

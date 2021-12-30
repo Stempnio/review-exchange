@@ -1,4 +1,4 @@
-package pl.edu.uj.reviewexchange.fragments
+package pl.edu.uj.reviewexchange.registration
 
 import android.content.Intent
 import android.os.Bundle
