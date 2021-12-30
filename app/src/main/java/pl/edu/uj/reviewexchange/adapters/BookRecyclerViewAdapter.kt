@@ -12,12 +12,18 @@ import androidx.recyclerview.widget.RecyclerView
 import pl.edu.uj.reviewexchange.R
 import pl.edu.uj.reviewexchange.databinding.RowBookBinding
 import pl.edu.uj.reviewexchange.models.Book
-import pl.edu.uj.reviewexchange.models.BookReview
 
-class BookRecyclerViewAdapter(private val booksList: MutableList<Book>)
+class BookRecyclerViewAdapter()
     : RecyclerView.Adapter<BookRecyclerViewAdapter.ViewHolder>(), Filterable {
 
+    private val booksList = ArrayList<Book>()
     private var bookFilterList : MutableList<Book> = booksList
+
+    fun setBookList(list : List<Book>) {
+        booksList.clear()
+        booksList.addAll(list)
+        notifyDataSetChanged()
+    }
 
     override fun getFilter(): Filter {
         return object : Filter() {
@@ -63,7 +69,7 @@ class BookRecyclerViewAdapter(private val booksList: MutableList<Book>)
         holder.imgButtonReview.setOnClickListener(
             Navigation.createNavigateOnClickListener(
                 R.id.action_searchFragment_to_bookReviewsFragment,
-                bundleOf("book_id" to book.id.toString(), "book_name" to book.name, "book_author" to book.author)))
+                bundleOf("book_id" to book.id, "book_name" to book.name, "book_author" to book.author)))
     }
 
     override fun getItemCount(): Int = bookFilterList.size

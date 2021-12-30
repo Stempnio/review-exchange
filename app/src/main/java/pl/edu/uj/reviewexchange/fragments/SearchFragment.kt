@@ -6,14 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import pl.edu.uj.reviewexchange.adapters.BookRecyclerViewAdapter
 import pl.edu.uj.reviewexchange.databinding.FragmentSearchBinding
-import pl.edu.uj.reviewexchange.models.BookPlaceholder
+import pl.edu.uj.reviewexchange.models.BookViewModel
 
 class SearchFragment : Fragment() {
-    private var _binding : FragmentSearchBinding? = null
 
+    private val bookVM by viewModels<BookViewModel>()
+
+    private var _binding : FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -24,8 +27,15 @@ class SearchFragment : Fragment() {
 
         val recyclerViewBookList = binding.recyclerViewBookList
         recyclerViewBookList.layoutManager = LinearLayoutManager(context)
-        val rvBookAdapter = BookRecyclerViewAdapter(BookPlaceholder.BOOKS)
+
+
+        val rvBookAdapter = BookRecyclerViewAdapter()
         recyclerViewBookList.adapter = rvBookAdapter
+
+        bookVM.books.observe(viewLifecycleOwner, {bookList ->
+            rvBookAdapter.setBookList(bookList)
+//            recyclerViewBookList.adapter = rvBookAdapter
+        })
 
         binding.svFragmentSearch.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
