@@ -6,8 +6,16 @@ import androidx.recyclerview.widget.RecyclerView
 import pl.edu.uj.reviewexchange.databinding.ReviewViewpager2Binding
 import pl.edu.uj.reviewexchange.models.BookReview
 
-class BookReviewViewPager2Adapter(private val reviewList: MutableList<BookReview>)
+class BookReviewViewPager2Adapter()
     : RecyclerView.Adapter<BookReviewViewPager2Adapter.ViewHolder>() {
+
+    private val reviewList = ArrayList<BookReview>()
+
+    fun setReviewList(list : List<BookReview>) {
+        reviewList.clear()
+        reviewList.addAll(list)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -19,7 +27,7 @@ class BookReviewViewPager2Adapter(private val reviewList: MutableList<BookReview
     override fun onBindViewHolder(holder: BookReviewViewPager2Adapter.ViewHolder, position: Int) {
 
         val review = reviewList[position]
-        holder.author.text = review.userId
+        holder.author.text = review.user_id
         holder.review.text = review.review
     }
 

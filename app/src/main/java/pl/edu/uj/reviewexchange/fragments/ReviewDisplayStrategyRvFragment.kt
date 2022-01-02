@@ -5,16 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import pl.edu.uj.reviewexchange.adapters.BookReviewRecyclerViewAdapter
 import pl.edu.uj.reviewexchange.databinding.FragmentReviewDisplayStrategyRvBinding
-import pl.edu.uj.reviewexchange.models.BookReview
+import pl.edu.uj.reviewexchange.models.BookReviewViewModel
 
-class ReviewDisplayStrategyRvFragment(private val reviewList : MutableList<BookReview>) : Fragment() {
+class ReviewDisplayStrategyRvFragment(private val book_id : String) : Fragment() {
+
     private var _binding : FragmentReviewDisplayStrategyRvBinding? = null
-
     private val binding get() = _binding!!
 
+    private val bookReviewVM by viewModels<BookReviewViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +27,12 @@ class ReviewDisplayStrategyRvFragment(private val reviewList : MutableList<BookR
         val recyclerView = binding.rvFragmentDisplayStrategyRv
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        recyclerView.adapter = BookReviewRecyclerViewAdapter(reviewList)
+        val adapter = BookReviewRecyclerViewAdapter()
+        recyclerView.adapter = adapter
+
+        bookReviewVM.getReviews(book_id).observe(viewLifecycleOwner, { reviewList ->
+            adapter.setReviewList(reviewList)
+        })
 
         return binding.root
     }

@@ -7,20 +7,21 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import pl.edu.uj.reviewexchange.R
 import pl.edu.uj.reviewexchange.databinding.FragmentBookReviewsBinding
-import pl.edu.uj.reviewexchange.models.BookReview
-import pl.edu.uj.reviewexchange.models.BookReviewPlaceHolder
+import pl.edu.uj.reviewexchange.models.BookReviewViewModel
 
 class BookReviewsFragment : Fragment() {
     private var _binding : FragmentBookReviewsBinding? = null
     private val binding get() = _binding!!
 
+    private val bookReviewVM by viewModels<BookReviewViewModel>()
+
     private lateinit var bookId : String
     private lateinit var bookName : String
     private lateinit var bookAuthor : String
-    private lateinit var reviewList : MutableList<BookReview>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,12 +30,13 @@ class BookReviewsFragment : Fragment() {
         _binding = FragmentBookReviewsBinding.inflate(layoutInflater, container, false)
 
         bookId = arguments?.getString("book_id").toString()
-        bookName = arguments?.getString("book_author").toString()
-        bookAuthor = arguments?.getString("book_name").toString()
+        bookName = arguments?.getString("book_name").toString()
+        bookAuthor =  arguments?.getString("book_author").toString()
 
-        reviewList = BookReviewPlaceHolder.getBookReviews(bookId.toInt())
-        if(reviewList.isEmpty())
-            displayMessageAlertDialog(getString(R.string.no_reviews_found))
+        bookReviewVM.bookHasReviews(bookId).observe(viewLifecycleOwner, { hasReviews ->
+            if(hasReviews == false)
+                displayMessageAlertDialog(getString(R.string.no_reviews_found))
+        })
 
         // set default style of display to recycler view
         setRecyclerViewDisplayMode()
@@ -65,7 +67,7 @@ class BookReviewsFragment : Fragment() {
         childFragmentManager.commit {
             setReorderingAllowed(true)
             replace(R.id.fragmentContainerFragmentBookReviews,
-                ReviewDisplayStrategyRvFragment(reviewList))
+                ReviewDisplayStrategyRvFragment(bookId))
         }
     }
 
@@ -73,7 +75,7 @@ class BookReviewsFragment : Fragment() {
         childFragmentManager.commit {
             setReorderingAllowed(true)
             replace(R.id.fragmentContainerFragmentBookReviews,
-                ReviewDisplayStrategyVpFragment(reviewList))
+                ReviewDisplayStrategyVpFragment(bookId))
         }
     }
 
