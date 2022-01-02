@@ -6,15 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import pl.edu.uj.reviewexchange.databinding.FragmentRegisterBinding
+import pl.edu.uj.reviewexchange.models.User
+import pl.edu.uj.reviewexchange.view_models.RegisterViewModel
 
 class RegisterFragment : Fragment() {
 
     private val REGISTER_DEBUG = "REGISTER_DEBUG"
     private val fbAuth = FirebaseAuth.getInstance()
+
+    private val registerVM by viewModels<RegisterViewModel>()
 
     private var _binding : FragmentRegisterBinding? = null
     private val binding get() = _binding!!
@@ -44,6 +49,12 @@ class RegisterFragment : Fragment() {
                 fbAuth.createUserWithEmailAndPassword(email, password)
                     .addOnSuccessListener { authRes ->
                         if(authRes.user != null) {
+
+                            val user = User.Builder(authRes.user!!.uid, authRes.user!!.email!!)
+                                .build()
+
+                            registerVM.createNewUser(user)
+
                             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLogInFragment())
                         }
                     }
