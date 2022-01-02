@@ -1,18 +1,7 @@
 package pl.edu.uj.reviewexchange.models
 
 import androidx.lifecycle.ViewModel
-import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
 import pl.edu.uj.reviewexchange.repository.FirebaseRepository
-
-open class BookRealm : RealmObject() {
-    @PrimaryKey
-    var id : Int = -1
-    var name : String = ""
-    var author : String = ""
-    var description : String = ""
-}
-
 
 data class Book(var id : String = "",
                 var name : String = "",
@@ -49,21 +38,6 @@ data class Book(var id : String = "",
 class BookViewModel : ViewModel() {
     private val repository = FirebaseRepository()
     val books = repository.getBooks()
-}
 
-//
-//object BookPlaceholder {
-//    val BOOKS : MutableList<Book> = ArrayList()
-//
-//    init {
-//        for (i in 1..25) {
-//            BOOKS.add(Book.Builder()
-//                .id(i)
-//                .name("Book $i")
-//                .author("Author of book $i")
-//                .description("Description of book $i")
-//                .build())
-//        }
-//
-//    }
-//}
+    fun getBookName(book_id : String) = repository.getBookName(book_id)
+}
