@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">Review Exchange</string>
 
-<!--    bottom navigation-->
+    <!--    bottom navigation-->
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="settings">Settings</string>
 
-<!--    review display strategy-->
+    <!--    review display strategy-->
     <string name="review_display_mode">Review display mode:</string>
     <string name="slides">Slides</string>
     <string name="scrollable_list">Scrollable list</string>
 
-<!--    log in and registration-->
+    <!--    log in and registration-->
     <string name="email">email</string>
     <string name="password">password</string>
     <string name="repeat_password">repeat password</string>
@@ -27,5 +27,9 @@
     <string name="my_reviews">My reviews</string>
     <string name="home_page">Home page</string>
     <string name="no_reviews_found">There are no reviews of this book yet</string>
+    <string name="log_out">log out</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="submit_book">submit book</string>
 
 </resources>
