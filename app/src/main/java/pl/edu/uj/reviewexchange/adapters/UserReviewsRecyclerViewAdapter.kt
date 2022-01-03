@@ -5,15 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import pl.edu.uj.reviewexchange.databinding.RowUserReviewBinding
 import pl.edu.uj.reviewexchange.models.BookReview
-import pl.edu.uj.reviewexchange.models.BookReviewViewModel
-
-
-// TODO on long click edit review
 
 class UserReviewsRecyclerViewAdapter
     : RecyclerView.Adapter<UserReviewsRecyclerViewAdapter.ViewHolder>() {
-//
-    private lateinit var bookVM : BookReviewViewModel
 
     private val reviewList = ArrayList<BookReview>()
 
@@ -33,8 +27,7 @@ class UserReviewsRecyclerViewAdapter
     override fun onBindViewHolder(holder: UserReviewsRecyclerViewAdapter.ViewHolder, position: Int) {
 
         val review = reviewList[position]
-//        TODO book title instead of id
-        holder.bookName.text = review.book_id
+        holder.bookName.text = review.book_name
         holder.review.text = review.review
     }
 

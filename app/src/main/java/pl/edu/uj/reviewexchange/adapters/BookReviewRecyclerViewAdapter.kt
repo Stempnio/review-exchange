@@ -27,7 +27,7 @@ class BookReviewRecyclerViewAdapter
     override fun onBindViewHolder(holder: BookReviewRecyclerViewAdapter.ViewHolder, position: Int) {
 
         val review = reviewList[position]
-        holder.author.text = review.user_id
+        holder.author.text = review.user_email
         holder.review.text = review.review
     }
 
