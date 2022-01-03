@@ -6,55 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".registration.RegisterFragment">
 
-    <EditText
-        android:id="@+id/etRegistrationEmail"
-        android:layout_marginHorizontal="@dimen/marginHorizontal"
-        android:layout_marginVertical="@dimen/marginVertical"
+    <TextView
+        android:id="@+id/tvRegistrationJoinUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/email"
-        app:layout_constraintBottom_toTopOf="@+id/etRegistrationPassword"
+        android:layout_marginBottom="60dp"
+        android:gravity="center"
+        android:text="Join us!"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/cvRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <EditText
-        android:id="@+id/etRegistrationPassword"
-        android:layout_marginHorizontal="@dimen/marginHorizontal"
-        android:layout_marginVertical="@dimen/marginVertical"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/password"
-        app:layout_constraintBottom_toTopOf="@+id/etRegistrationRepeatPassword"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="30dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toTopOf="@id/btnRegistrationRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegistrationEmail" />
+        app:layout_constraintTop_toBottomOf="@id/tvRegistrationJoinUs">
 
-    <EditText
-        android:id="@+id/etRegistrationRepeatPassword"
-        android:layout_marginHorizontal="@dimen/marginHorizontal"
-        android:layout_marginVertical="@dimen/marginVertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/repeat_password"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegistrationRegister"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegistrationPassword" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etRegistrationEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/marginHorizontal"
+                android:layout_marginVertical="@dimen/marginVertical"
+                android:hint="@string/email" />
+
+            <EditText
+                android:id="@+id/etRegistrationPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/marginHorizontal"
+                android:layout_marginVertical="@dimen/marginVertical"
+                android:hint="@string/password"
+                android:inputType="textPassword"/>
+
+            <EditText
+                android:id="@+id/etRegistrationRepeatPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/marginHorizontal"
+                android:layout_marginVertical="@dimen/marginVertical"
+                android:hint="@string/repeat_password"
+                android:inputType="textPassword"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegistrationRegister"
         android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_marginHorizontal="@dimen/marginHorizontal"
-        android:layout_marginVertical="@dimen/marginVertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white"
         android:text="@string/register"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistrationGoBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegistrationRepeatPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/cvRegister" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegistrationGoBack"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:text="I already have an account"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrationRegister" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

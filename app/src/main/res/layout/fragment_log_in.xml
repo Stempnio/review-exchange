@@ -7,57 +7,92 @@
     tools:context=".registration.LogInFragment">
 
 
-    <EditText
-        android:id="@+id/etLogInEmail"
-        android:layout_marginHorizontal="@dimen/marginHorizontal"
-        android:layout_marginVertical="@dimen/marginVertical"
+    <ImageView
+        android:id="@+id/ivLogInIcon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/email"
-        app:layout_constraintBottom_toTopOf="@+id/etLogInPassword"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_main"
+        android:layout_margin="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etLogInPassword"
-        android:layout_marginHorizontal="@dimen/marginHorizontal"
-        android:layout_marginVertical="@dimen/marginVertical"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/password"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogInLogIn"
+        android:layout_margin="40dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLogInEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/ivLogInIcon">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etLogInEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/marginHorizontal"
+                android:layout_marginVertical="@dimen/marginVertical"
+                android:hint="@string/email"
+                app:layout_constraintTop_toBottomOf="@+id/ivLogInIcon"
+                tools:layout_editor_absoluteX="40dp" />
+
+            <EditText
+                android:id="@+id/etLogInPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/marginHorizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toTopOf="@+id/btnLogInLogIn"
+                app:layout_constraintEnd_toEndOf="@+id/etLogInEmail"
+                app:layout_constraintStart_toStartOf="@+id/etLogInEmail"
+                app:layout_constraintTop_toBottomOf="@+id/etLogInEmail" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogInLogIn"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
         android:layout_marginHorizontal="@dimen/marginHorizontal"
         android:layout_marginVertical="@dimen/marginVertical"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:background="@color/white"
         android:text="@string/log_in"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogInRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLogInPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogInRegister"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
         android:layout_marginHorizontal="@dimen/marginHorizontal"
         android:layout_marginVertical="@dimen/marginVertical"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:background="@color/white"
         android:text="@string/register"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogInLogIn" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogInForgotPassword"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="@dimen/marginHorizontal"
+        android:layout_marginVertical="@dimen/marginVertical"
+        android:text="forgot password"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogInRegister" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
