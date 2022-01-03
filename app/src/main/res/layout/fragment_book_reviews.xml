@@ -48,8 +48,9 @@
             <TextView
                 android:id="@+id/tvBookReviewAuthor"
                 android:layout_width="157dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:layout_marginBottom="5dp"
                 tools:text="author"
                 android:textSize="16sp"
                 android:textStyle="italic"
