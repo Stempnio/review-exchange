@@ -37,13 +37,25 @@ class SettingsFragment : Fragment() {
             }
 
             val map = mapOf("name" to name, "surname" to surname, "gender" to gender)
-            settingsVM.updateUserData(map)
+            settingsVM.updateUserData(map, requireContext())
         }
 
-        binding.btnSettingsFragmentLogOut.setOnClickListener {
-            auth.signOut()
-            requireActivity().finish()
+        binding.btnSettingsFragmentChangePassword.setOnClickListener {
+            val password = binding.etSettingsFragmentPassword.text.toString()
+            val repeatPassword = binding.etSettingsFragmentRepeatPassword.text.toString()
+
+            if(password == repeatPassword && password != "") {
+                FirebaseAuth.getInstance().currentUser!!.updatePassword(password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            displayMessageToast("Password changed successfully")
+                        } else {
+                            displayMessageToast("Password change fail")
+                        }
+                    }
+            }
         }
+
 
         return binding.root
     }
