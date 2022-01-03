@@ -1,5 +1,6 @@
 package pl.edu.uj.reviewexchange.models
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import pl.edu.uj.reviewexchange.repository.FirebaseRepository
 
@@ -40,4 +41,6 @@ class BookViewModel : ViewModel() {
     val books = repository.getBooks()
 
     fun getBookName(book_id : String) = repository.getBookName(book_id)
+
+    fun addBook(book : Book, context: Context) = repository.addBook(book, context)
 }

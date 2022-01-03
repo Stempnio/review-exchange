@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import pl.edu.uj.reviewexchange.databinding.FragmentRegisterBinding
+import pl.edu.uj.reviewexchange.fragments.displayMessageToast
 import pl.edu.uj.reviewexchange.models.User
 import pl.edu.uj.reviewexchange.view_models.RegisterViewModel
 
@@ -37,6 +38,14 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpRegisterOnClick()
+
+        setUpGoBackOnClick()
+    }
+
+    private fun setUpGoBackOnClick() {
+        binding.btnRegistrationGoBack.setOnClickListener {
+            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLogInFragment())
+        }
     }
 
     private fun setUpRegisterOnClick() {
@@ -54,12 +63,12 @@ class RegisterFragment : Fragment() {
                                 .build()
 
                             registerVM.createNewUser(user)
-
+                            displayMessageToast("Account successfully created!")
                             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLogInFragment())
                         }
                     }
                     .addOnFailureListener { exception ->
-                        Snackbar.make(requireView(), "Ups... something went wrong", Snackbar.LENGTH_SHORT)
+                        Snackbar.make(requireView(), exception.message.toString(), Snackbar.LENGTH_SHORT)
                             .show()
                         Log.e(REGISTER_DEBUG, exception.message.toString())
                     }

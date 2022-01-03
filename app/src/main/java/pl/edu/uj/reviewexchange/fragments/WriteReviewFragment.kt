@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import pl.edu.uj.reviewexchange.R
 import pl.edu.uj.reviewexchange.databinding.FragmentWriteReviewBinding
 import pl.edu.uj.reviewexchange.view_models.WriteReviewViewModel
@@ -35,7 +36,7 @@ class WriteReviewFragment : Fragment(R.layout.fragment_write_review) {
         binding.btnFragmentWriteReviewSubmit.setOnClickListener {
             val review = binding.etFragmentWriteReview.text.trim().toString()
             if(review != "") {
-                writeReviewVM.submitReview(review, bookId)
+                writeReviewVM.submitReview(review, bookId, bookName, FirebaseAuth.getInstance().currentUser!!.email!!, requireContext())
                 findNavController().navigate(WriteReviewFragmentDirections.actionWriteReviewFragmentToSearchFragment())
             } else {
                 TODO("empty review")
