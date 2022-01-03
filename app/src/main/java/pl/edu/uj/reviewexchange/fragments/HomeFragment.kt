@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import pl.edu.uj.reviewexchange.R
 import pl.edu.uj.reviewexchange.databinding.FragmentHomeBinding
 import pl.edu.uj.reviewexchange.models.UserViewModel
@@ -29,6 +30,19 @@ class HomeFragment : Fragment() {
             view -> view.findNavController().navigate(R.id.action_homeFragment_to_userOpinionsFragment)
         }
 
+        binding.cvHomeFragmentAddBook.setOnClickListener {
+            view -> view.findNavController().navigate(R.id.action_homeFragment_to_addBookFragment)
+        }
+
+        binding.cvHomeFragmentAboutApp.setOnClickListener {
+            view -> view.findNavController().navigate(R.id.action_homeFragment_to_aboutAppFragment)
+        }
+
+        binding.cvHomeFragmentLogOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            requireActivity().finish()
+        }
+
         return binding.root
     }
 
@@ -36,7 +50,12 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         userVM.user.observe(viewLifecycleOwner, {user ->
-            val header = "Hello " + user.name
+            var header = "Hello "
+            if(user.name == "")
+                header += user.email
+            else
+                header += user.name
+
             binding.tvHomeHeader.text = header
         })
     }
