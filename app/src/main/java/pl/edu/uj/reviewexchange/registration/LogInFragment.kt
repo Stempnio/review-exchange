@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import pl.edu.uj.reviewexchange.activities.MainActivity
 import pl.edu.uj.reviewexchange.databinding.FragmentLogInBinding
+import pl.edu.uj.reviewexchange.fragments.displayMessageToast
 
 
 class LogInFragment : Fragment() {
@@ -29,19 +29,22 @@ class LogInFragment : Fragment() {
     ): View {
         _binding = FragmentLogInBinding.inflate(layoutInflater, container, false)
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         setUpLoginOnClick()
         setUpRegistrationOnClick()
+        setUpForgotPasswordOnClick()
+
+        return binding.root
     }
 
     private fun setUpRegistrationOnClick() {
         binding.btnLogInRegister.setOnClickListener {
             findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToRegisterFragment().actionId)
+        }
+    }
+
+    private fun setUpForgotPasswordOnClick() {
+        binding.btnLogInForgotPassword.setOnClickListener {
+            findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToForgotPasswordFragment())
         }
     }
 
@@ -51,21 +54,22 @@ class LogInFragment : Fragment() {
             val password = binding.etLogInPassword.text.trim().toString()
 
             if(email != "" && password != "") {
-                fbAuth.signInWithEmailAndPassword(email, password)
-                    .addOnSuccessListener { authResult ->
 
-                        if (authResult.user != null) {
+                fbAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(LOG_IN_DEBUG, "signInWithEmail:success")
                             val intent = Intent(requireContext(), MainActivity::class.java).apply {
                                 flags =
                                     (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             }
                             startActivity(intent)
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(LOG_IN_DEBUG, "signInWithEmail:failure", task.exception)
+                            displayMessageToast(task.exception.toString())
                         }
-                    }
-                    .addOnFailureListener { exception ->
-                        Snackbar.make(requireView(), "Ups... something went wrong", Snackbar.LENGTH_SHORT)
-                            .show()
-                        Log.e(LOG_IN_DEBUG, exception.message.toString())
                     }
             }
         }
