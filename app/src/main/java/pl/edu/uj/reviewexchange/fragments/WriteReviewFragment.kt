@@ -39,7 +39,7 @@ class WriteReviewFragment : Fragment(R.layout.fragment_write_review) {
                 writeReviewVM.submitReview(review, bookId, bookName, FirebaseAuth.getInstance().currentUser!!.email!!, requireContext())
                 findNavController().navigate(WriteReviewFragmentDirections.actionWriteReviewFragmentToSearchFragment())
             } else {
-                TODO("empty review")
+                displayMessageAlertDialog("Review is empty!")
             }
         }
 
