@@ -1,6 +1,6 @@
 ## REVIEW EXCHANGE
 
-### Android app that designed to give users the opportunity to share their reviews of books with others.
+### Android app that is designed to give users the opportunity to share their reviews of books with others.
 
 ### Video presentation of the app:
 https://youtu.be/vkOsfHOfCKE
