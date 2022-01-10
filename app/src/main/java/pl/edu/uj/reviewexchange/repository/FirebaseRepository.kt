@@ -7,7 +7,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
+import pl.edu.uj.reviewexchange.factory.DisplayType
+import pl.edu.uj.reviewexchange.factory.MessageCreator
 import pl.edu.uj.reviewexchange.models.Book
 import pl.edu.uj.reviewexchange.models.BookReview
 import pl.edu.uj.reviewexchange.models.User
@@ -15,7 +16,6 @@ import pl.edu.uj.reviewexchange.models.User
 class FirebaseRepository {
     private val FIREBASE_REPOSITORY_DEBUG = "FIREBASE_REPOSITORY_DEBUG"
 
-    private val storage = FirebaseStorage.getInstance()
     private val auth = FirebaseAuth.getInstance()
     private val cloud = FirebaseFirestore.getInstance()
 
@@ -53,17 +53,18 @@ class FirebaseRepository {
             .addOnSuccessListener {
                 Log.d(FIREBASE_REPOSITORY_DEBUG, "update user data SUCCESS")
 
-                Toast.makeText(context
-                    , "Data successfully updated!"
-                    , Toast.LENGTH_SHORT).show()
-
+                MessageCreator.createMessage("Data successfully updated!",
+                    DisplayType.TOAST,
+                    context)
             }
             .addOnFailureListener { exception ->
                 Log.d(FIREBASE_REPOSITORY_DEBUG, "update user data FAIL")
 
-                Toast.makeText(context
-                    , "Error while updating data! ${exception.message.toString()}"
-                    , Toast.LENGTH_SHORT).show()
+                MessageCreator.createMessage(
+                    "Error while updating data! ${exception.message.toString()}",
+                    DisplayType.ALERT_DIALOG,
+                    context)
+
             }
     }
 
@@ -77,9 +78,9 @@ class FirebaseRepository {
                 ,"user_id" to auth.currentUser!!.uid))
             .addOnSuccessListener {
                 Log.d(FIREBASE_REPOSITORY_DEBUG, "submit review SUCCESS")
-                Toast.makeText(context
-                    , "Review successfully added!"
-                    , Toast.LENGTH_SHORT).show()
+
+                MessageCreator.createMessage("Review successfully added!", DisplayType.TOAST, context)
+
             }
             .addOnFailureListener { exception ->
                 Log.d(FIREBASE_REPOSITORY_DEBUG, "submit review FAIL")
@@ -223,10 +224,13 @@ class FirebaseRepository {
                         .addOnFailureListener { exception ->
                             Log.d(FIREBASE_REPOSITORY_DEBUG, "add book FAIL")
 
+
                             Toast.makeText(context
                                 , "Error while adding book! ${exception.message.toString()}"
                                 , Toast.LENGTH_SHORT).show()
                         }
+                } else {
+                    Log.d(FIREBASE_REPOSITORY_DEBUG, "book already in db")
                 }
             }
     }
