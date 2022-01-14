@@ -12,8 +12,6 @@ import pl.edu.uj.reviewexchange.view_models.SettingsViewModel
 
 class SettingsFragment : Fragment() {
 
-    private val auth = FirebaseAuth.getInstance()
-
     private val settingsVM by viewModels<SettingsViewModel>()
 
     private var _binding : FragmentSettingsBinding? = null
@@ -28,7 +26,7 @@ class SettingsFragment : Fragment() {
         binding.btnSettigsFragmentApplyChanges.setOnClickListener {
             val name = binding.etSettingsFragmentName.text.trim().toString()
             val surname = binding.etSettingsFragmentSurname.text.trim().toString()
-            var gender : String = ""
+            var gender = ""
             val rgGenderId = binding.rgSettingsFragmentGender.checkedRadioButtonId
             when(rgGenderId) {
                 binding.rbSettingsFragmentMale.id -> gender = "Male"
@@ -37,7 +35,7 @@ class SettingsFragment : Fragment() {
             }
 
             val map = mapOf("name" to name, "surname" to surname, "gender" to gender)
-            settingsVM.updateUserData(map, requireContext())
+            updateUser(map)
         }
 
         binding.btnSettingsFragmentChangePassword.setOnClickListener {
@@ -63,5 +61,9 @@ class SettingsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun updateUser(map : Map<String, String>) {
+        settingsVM.updateUserData(map, requireContext())
     }
 }

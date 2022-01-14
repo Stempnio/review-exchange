@@ -67,7 +67,7 @@ class BookReviewsFragment : Fragment() {
         childFragmentManager.commit {
             setReorderingAllowed(true)
             replace(R.id.fragmentContainerFragmentBookReviews,
-                ReviewDisplayStrategyRvFragment(bookId))
+                ReviewDisplayStrategyRvFragment(bookReviewVM.getReviews(bookId)))
         }
     }
 
@@ -75,7 +75,7 @@ class BookReviewsFragment : Fragment() {
         childFragmentManager.commit {
             setReorderingAllowed(true)
             replace(R.id.fragmentContainerFragmentBookReviews,
-                ReviewDisplayStrategyVpFragment(bookId))
+                ReviewDisplayStrategyVpFragment(bookReviewVM.getReviews(bookId)))
         }
     }
 

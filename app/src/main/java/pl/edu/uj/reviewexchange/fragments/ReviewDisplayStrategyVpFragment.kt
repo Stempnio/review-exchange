@@ -5,17 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
 import pl.edu.uj.reviewexchange.adapters.BookReviewViewPager2Adapter
 import pl.edu.uj.reviewexchange.databinding.FragmentReviewDisplayStrategyVpBinding
-import pl.edu.uj.reviewexchange.models.BookReviewViewModel
+import pl.edu.uj.reviewexchange.models.BookReview
 
-
-class ReviewDisplayStrategyVpFragment(private val book_id : String) : Fragment() {
+class ReviewDisplayStrategyVpFragment(private val reviews : LiveData<MutableList<BookReview>>) : Fragment() {
     private var _binding : FragmentReviewDisplayStrategyVpBinding? = null
     private val binding get() = _binding!!
-
-    private val bookReviewVM by viewModels<BookReviewViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +25,7 @@ class ReviewDisplayStrategyVpFragment(private val book_id : String) : Fragment()
 
         viewpager2.adapter = viewpager2Adapter
 
-        bookReviewVM.getReviews(book_id).observe(viewLifecycleOwner, {reviewList ->
+        reviews.observe(viewLifecycleOwner, {reviewList ->
             viewpager2Adapter.setReviewList(reviewList)
         })
 

@@ -10,7 +10,6 @@ import com.google.firebase.auth.FirebaseAuth
 import pl.edu.uj.reviewexchange.databinding.FragmentForgotPasswordBinding
 import pl.edu.uj.reviewexchange.fragments.displayMessageToast
 
-
 class ForgotPasswordFragment : Fragment() {
     private var _binding : FragmentForgotPasswordBinding? = null
     private val binding get() = _binding!!
@@ -25,12 +24,8 @@ class ForgotPasswordFragment : Fragment() {
             val email = binding.etForgotPasswordEmail.text.trim().toString()
             if(email != "") {
                 FirebaseAuth.getInstance().sendPasswordResetEmail(email)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            displayMessageToast("If email is correct, you will receive message with link to reset password")
-                        } else {
-                            displayMessageToast("If email is correct, you will receive message with link to reset password")
-                        }
+                    .addOnCompleteListener {
+                        displayMessageToast("If email is correct, you will receive message with link to reset password")
                     }
             }
         }
